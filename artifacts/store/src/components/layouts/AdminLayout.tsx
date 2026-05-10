@@ -66,10 +66,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-16 border-b bg-background flex items-center justify-between px-6 sticky top-0 z-30">
           <div className="md:hidden font-bold text-lg">EcoStore Admin</div>
-          <div className="hidden md:flex items-center text-sm text-muted-foreground font-medium capitalize">
-            {location.replace('/admin', '').split('/')[1] || 'Dashboard'}
-          </div>
-          
+          <div className="hidden md:block" />
+
           <div className="flex items-center gap-4">
             <Popover>
               <PopoverTrigger asChild>
