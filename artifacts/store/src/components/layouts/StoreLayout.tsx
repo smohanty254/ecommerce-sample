@@ -9,8 +9,8 @@ import { Badge } from "@/components/ui/badge";
 
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   const { user, logout } = useAuth();
-  const { data: cart } = useGetCart({ query: { enabled: !!user } });
-  const { data: notificationsData } = useListNotifications({ unreadOnly: true }, { query: { enabled: !!user } });
+  const { data: cart } = useGetCart({ query: { enabled: !!user } as never });
+  const { data: notificationsData } = useListNotifications({ unreadOnly: true }, { query: { enabled: !!user } as never });
   const notifications = notificationsData || [];
   
   return (

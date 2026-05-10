@@ -16,8 +16,8 @@ export default function ProductDetail() {
   
   const [quantity, setQuantity] = useState(1);
 
-  const { data: product, isLoading } = useGetProduct(id, { query: { enabled: !!id } });
-  const { data: reviewsData } = useListReviews({ productId: id }, { query: { enabled: !!id } });
+  const { data: product, isLoading } = useGetProduct(id, { query: { enabled: !!id } as never });
+  const { data: reviewsData } = useListReviews({ productId: id }, { query: { enabled: !!id } as never });
   const addCartItem = useAddCartItem();
 
   const reviews = reviewsData?.data || [];

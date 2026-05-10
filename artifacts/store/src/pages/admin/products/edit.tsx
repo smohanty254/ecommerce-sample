@@ -33,7 +33,7 @@ export default function AdminProductEdit() {
   const id = parseInt(params.id || "0");
   const [, setLocation] = useLocation();
   const { data: categoriesData } = useListCategories();
-  const { data: product, isLoading } = useGetProduct(id, { query: { enabled: !!id } });
+  const { data: product, isLoading } = useGetProduct(id, { query: { enabled: !!id } as never });
   const updateProduct = useUpdateProduct();
   const categories = categoriesData || [];
 

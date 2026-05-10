@@ -23,7 +23,7 @@ export default function Login() {
   const loginMutation = useLogin();
   const [ssoProvider, setSsoProvider] = useState<"google" | "github" | "facebook" | null>(null);
 
-  const { refetch: redirectSso } = useSsoRedirect(ssoProvider as any, { query: { enabled: false } });
+  const { refetch: redirectSso } = useSsoRedirect(ssoProvider as any, { query: { enabled: false } as never });
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),

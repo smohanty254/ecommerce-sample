@@ -1,11 +1,13 @@
 import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 import { useAuth } from "@/lib/auth";
 import { useGetMe } from "@workspace/api-client-react";
+import { createQueryClient } from "@/lib/query-client";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 import StoreLayout from "@/components/layouts/StoreLayout";
 import AdminLayout from "@/components/layouts/AdminLayout";
@@ -32,7 +34,7 @@ import AdminForms from "@/pages/admin/forms/index";
 import AdminFormBuilder from "@/pages/admin/forms/builder";
 import AdminReports from "@/pages/admin/reports/index";
 
-const queryClient = new QueryClient();
+const queryClient = createQueryClient();
 
 function ProtectedRoute({ component: Component, role, layout: Layout = ({children}: any) => <>{children}</>, ...rest }: any) {
   const { user, token } = useAuth();
@@ -48,10 +50,7 @@ function ProtectedRoute({ component: Component, role, layout: Layout = ({childre
 function Router() {
   const { token, setUser, logout } = useAuth();
   const { data: user, error } = useGetMe({
-    query: {
-      enabled: !!token,
-      retry: false,
-    }
+    query: { enabled: !!token, retry: false } as never,
   });
 
   useEffect(() => {
@@ -105,14 +104,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

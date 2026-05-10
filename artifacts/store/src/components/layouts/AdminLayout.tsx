@@ -21,7 +21,7 @@ const NAV_ITEMS = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const { user, logout } = useAuth();
-  const { data: notificationsData } = useListNotifications({ unreadOnly: true }, { query: { enabled: !!user } });
+  const { data: notificationsData } = useListNotifications({ unreadOnly: true }, { query: { enabled: !!user } as never });
   const notifications = notificationsData || [];
   
   return (

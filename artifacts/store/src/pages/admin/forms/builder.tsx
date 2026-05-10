@@ -64,7 +64,7 @@ export default function AdminFormBuilder() {
   const isNew = !id;
   const [, setLocation] = useLocation();
 
-  const { data: form } = useGetForm(id as number, { query: { enabled: !!id } });
+  const { data: form } = useGetForm(id as number, { query: { enabled: !!id } as never });
   const createForm = useCreateForm();
   const updateForm = useUpdateForm();
 
@@ -124,8 +124,8 @@ export default function AdminFormBuilder() {
 
   const activeField = fields.find(f => f.id === activeFieldId);
 
-  const handleSave = () => {
-    if (!name) return toast({ title: "Name required", variant: "destructive" });
+  const handleSave = (): void => {
+    if (!name) { toast({ title: "Name required", variant: "destructive" }); return; }
     
     // Assign order based on array position
     const orderedFields = fields.map((f, i) => ({ ...f, order: i }));

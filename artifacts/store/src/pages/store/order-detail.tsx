@@ -15,7 +15,7 @@ export default function OrderDetail() {
   const id = parseInt(params.id || "0");
   const queryClient = useQueryClient();
 
-  const { data: order, isLoading } = useGetOrder(id, { query: { enabled: !!id } });
+  const { data: order, isLoading } = useGetOrder(id, { query: { enabled: !!id } as never });
 
   useEffect(() => {
     if (!id) return;
@@ -179,7 +179,7 @@ export default function OrderDetail() {
             <Separator />
             <div>
               <h3 className="font-semibold mb-2 text-sm text-muted-foreground uppercase tracking-wider">Payment Method</h3>
-              <p className="text-sm capitalize">{order.paymentMethod.replace('_', ' ')}</p>
+              <p className="text-sm capitalize">{order.paymentMethod?.replace('_', ' ') ?? '—'}</p>
             </div>
             {order.notes && (
               <>

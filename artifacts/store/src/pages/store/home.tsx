@@ -9,8 +9,8 @@ export default function Home() {
   const { data: featuredData, isLoading: featuredLoading } = useListFeaturedProducts();
   const { data: trendingData, isLoading: trendingLoading } = useListTrendingProducts();
 
-  const featured = featuredData?.data || [];
-  const trending = trendingData?.data || [];
+  const featured = featuredData || [];
+  const trending = trendingData || [];
 
   return (
     <div className="min-h-screen bg-background">
