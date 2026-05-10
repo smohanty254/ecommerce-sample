@@ -30,6 +30,7 @@ import AdminCategories from "@/pages/admin/categories/index";
 import AdminAnalytics from "@/pages/admin/analytics/index";
 import AdminForms from "@/pages/admin/forms/index";
 import AdminFormBuilder from "@/pages/admin/forms/builder";
+import AdminReports from "@/pages/admin/reports/index";
 
 const queryClient = new QueryClient();
 
@@ -94,6 +95,7 @@ function Router() {
       <ProtectedRoute path="/admin/forms" component={AdminForms} role="manager" layout={AdminLayout} />
       <ProtectedRoute path="/admin/forms/new" component={AdminFormBuilder} role="manager" layout={AdminLayout} />
       <ProtectedRoute path="/admin/forms/:id" component={AdminFormBuilder} role="manager" layout={AdminLayout} />
+      <ProtectedRoute path="/admin/reports" component={AdminReports} role="manager" layout={AdminLayout} />
       
       {/* Fallback */}
       <Route component={NotFound} />

@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useAuth } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { useListNotifications } from "@workspace/api-client-react";
-import { LayoutDashboard, Package, ShoppingCart, Users, FolderTree, FileSpreadsheet, BarChart3, Bell, Settings, LogOut } from "lucide-react";
+import { LayoutDashboard, Package, ShoppingCart, Users, FolderTree, FileSpreadsheet, BarChart3, Bell, LogOut, Download } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { href: "/admin/categories", label: "Categories", icon: FolderTree },
   { href: "/admin/forms", label: "Forms", icon: FileSpreadsheet },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/admin/reports", label: "Reports", icon: Download },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

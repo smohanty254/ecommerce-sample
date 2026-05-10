@@ -19,6 +19,7 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2",
     "drizzle-orm": "catalog:",
+    "exceljs": "^4.4.0",
     "express": "^5",
     "express-session": "^1.19.0",
     "ioredis": "^5.10.1",
@@ -26,6 +27,7 @@
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
     "passport-google-oauth20": "^2.0.0",
+    "pdfkit": "^0.18.0",
     "pino": "^9",
     "pino-http": "^10",
     "socket.io": "^4.8.3"
@@ -41,6 +43,7 @@
     "@types/passport": "^1.0.17",
     "@types/passport-github2": "^1.2.9",
     "@types/passport-google-oauth20": "^2.0.17",
+    "@types/pdfkit": "^0.17.6",
     "esbuild": "^0.27.3",
     "esbuild-plugin-pino": "^2.3.3",
     "pino-pretty": "^13",

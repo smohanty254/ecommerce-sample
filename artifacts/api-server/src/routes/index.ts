@@ -10,6 +10,7 @@ import reviewsRouter from "./reviews";
 import formsRouter from "./forms";
 import analyticsRouter from "./analytics";
 import notificationsRouter from "./notifications";
+import reportsRouter from "./reports";
 
 const router: IRouter = Router();
 
@@ -24,5 +25,6 @@ router.use(reviewsRouter);
 router.use(formsRouter);
 router.use(analyticsRouter);
 router.use(notificationsRouter);
+router.use(reportsRouter);
 
 export default router;
